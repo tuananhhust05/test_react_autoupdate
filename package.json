@@ -1,0 +1,65 @@
+{
+  "name": "test",
+  "version": "0.1.0",
+  "private": true,
+  "main": "public/electron.js",
+  "homepage": "./",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tuananhhust05/test_react_autoupdate"
+  },
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.3.0",
+    "@testing-library/user-event": "^13.5.0",
+    "concurrently": "^7.3.0",
+    "cross-env": "^7.0.3",
+    "electron-is-dev": "^2.0.0",
+    "electron-updater": "^5.0.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
+    "wait-on": "^6.0.1",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "concurrently \"cross-env BROWSER=none react-scripts start\" \"wait-on http://localhost:3000 && electron .\"",
+    "build:prod": "react-scripts build && electron-builder --win",
+    "build:publish": "react-scripts build && electron-builder --win --publish always"
+  },
+  "build": {
+    "appId": "com.autoupdater.demotuananh",
+    "productName": "Autoupdater Demo",
+    "directories": {
+      "output": "electron-build",
+      "buildResources": "build-assets"
+    },
+    "win": {
+      "publish": [
+        "github"
+      ]
+    }
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "electron": "^19.0.8",
+    "electron-builder": "^23.1.0"
+  }
+}
